@@ -1,14 +1,358 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="utf-8">
-    <title>test test</title>
-    <style>
-      body { margin: 0; }
-    </style>
-    <script type="module" crossorigin src="/assets/index-B7LOZRR1.js"></script>
-  </head>
-  <body>
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+     <!-- load local Inter font -->
+    <link rel="stylesheet" href="static/fonts/inter.css">
+    <!-- load css style sheets -->
+    <link rel="stylesheet" href="static/css/everything.css">
+    <!-- load js for components-->
+    <script type="text/javascript" src="static/js/component/loader.js"></script>
+    <script type="text/javascript" src="static/js/component/theme.js"></script>
+    <script type="text/javascript" src="static/js/component/updates.js"></script>
+    <script type="text/javascript" src="static/js/component/sidebar.js"></script>
+    <script type="text/javascript" src="static/js/component/links.js"></script>
+    <script type="text/javascript" src="static/js/component/lang.js"></script>
+    <script type="text/javascript" src="static/js/component/header.js"></script>
+    <!-- load js for populating content -->
+    <script type="text/javascript" src="static/js/content/header.js"></script>
+    <script type="text/javascript" src="static/js/content/about.js"></script>
+    <script type="text/javascript" src="static/js/content/sidebar.js"></script>
+    <script type="text/javascript" src="static/js/content/updates.js"></script>
+    <script type="text/javascript" src="static/js/content/projects.js"></script>
+    <script type="text/javascript" src="static/js/content/modal.js"></script>
+    <script type="text/javascript" src="static/js/content/education.js"></script>
+    <script type="text/javascript" src="static/js/content/work.js"></script>
+    <script type="text/javascript" src="static/js/content/research.js"></script>
+    <script type="text/javascript" src="static/js/content/consulting.js"></script>
+    <script type="text/javascript" src="static/js/content/volunteer.js"></script>
+    <!-- load js for data loading  -->
+    <script type="text/javascript" src="static/js/encode.js"></script>
+    <!-- loading threejs code for 3d animations-->
+    <script type="module" src="static/js/three.js"></script>
+    <!-- <script type="module" src="static/js/3d.js"></script> -->
 
-  </body>
+    <title>Zelong Li's Website</title>
+</head>
+<body class="light">
+    <noscript>
+        <div class="no-js">
+            JavaScript is disabled in your browser. Please enable JavaScript to use this website.
+        </div>
+    </noscript>
+    <div class="yes-js">
+        <div class="loader-container">
+            <div class="loader"></div>
+            <div class="loader-text"><p>Loading Resources</p></div>
+        </div>
+        <div class="page">
+            <div class="sidebar collapsed" id="sidebar">
+                <!-- Collapse toggle placed at top center -->
+                <button class="collapse-btn" id="collapse-btn" type="button">☰</button>
+                <nav>
+                    <ul>
+                        <li><a href="#home"><span class="link-text">Home</span></a></li>
+                        <li><a href="#about"><span class="link-text">About</span></a></li>
+                        <li><a href="#updates"><span class="link-text">Updates</span></a></li>
+                        <li><a href="#projects"><span class="link-text">Projects</span></a></li>
+                        <li><a href="#education"><span class="link-text">Education</span></a></li>
+                        <li><a href="#work"><span class="link-text">Work</span></a></li>
+                        <li><a href="#research"><span class="link-text">Research</span></a></li>
+                        <li><a href="#consulting"><span class="link-text">Consulting</span></a></li>
+                        <li><a href="#volunteer"><span class="link-text">Volunteer</span></a></li>
+                        <!-- <li><a href="#contacts"><span>Contacts</span></a></li> -->
+                    </ul>
+                </nav>
+                <!-- Dark/Light toggle at bottom using icons -->
+                <button class="toggle-btn" id="theme-toggle" type="button" title="Toggle Mode" style="margin-top:auto;"></button>
+            </div>
+            <div class="content">
+                <header id="home">
+                    <div class="home-container">
+                        <div class="header-container">
+                            <div class="header-left">
+                                <div class="profile-picture">
+                                    <img src="" alt="Profile Picture" />
+                                </div>
+                                <div style="display: grid;">
+                                    <h1>
+                                        <span class="header-text"></span><span class="blink">|</span>
+                                    </h1>
+                                    <div class="icon-row">
+                                        <a href="" target="_blank" title="">
+                                            <img src="" alt=""/>
+                                        </a>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="header-right">
+                                <div style="display: grid;">
+                                    <button class="lang-toggle" id="lang-toggle" type="button">EN</button>
+                                    <button class="toggle-btn-header" id="theme-toggle-header" type="button" title="Toggle Mode"></button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </header>
+                <main>
+                    <section id="about">
+                        <div class="about-container">
+                            <h2><span class="about-section-title"></span></h2>
+                            <p><span class="about-text">Dummy text. You need to enable JavaScript!</span></p>
+                        </div>
+                    </section>
+                    <section id="updates">
+                        <div class="updates-content" id="updates-content">
+                            <button class="updates-collapse-btn" id="updates-collapse-btn" type="button">&#x26F6;</button>
+                            <h2><span class="updates-section-title"></span></h2>
+                            <p><b><span class="updates-upcoming-title"></span>: </b><span class="updates-upcoming-text"></span></p>
+                            <div class="updates-details" id="updates-details">
+                                <ul></ul>
+                            </div>
+                        </div>
+                    </section>
+                    <section id="projects">
+                        <a href="{{ url_for('projects') }}" class="view-all-btn"><span class="view-all-button-text"></span></a>
+                        <h2><span class="projects-section-title"></span></h2>
+                        <div class="tiles">
+                            <!-- Clickable project tiles with title tooltip -->
+                            <div class="tile" data-title="Project 1" title="Click for more information">
+                                <div class="project-image-container"><img class="project-splash-art" src="" alt=""/></div>
+                                <div class="tile-text">
+                                    <h3><span class="personal-project-title"></span></h3>
+                                    <p><span class="personal-project-description"></span></p>
+                                </div>
+                            </div>
+                        </div>
+                    </section>
+                    <section id="education">
+                        <h2><span class="education-section-title"></span></h2>
+                        <div class="education-entries">
+                            <div class="education-entry">
+                                <!-- <img class="college-logo" src="" alt=""/> -->
+                                <div>
+                                    <h3><span class="degree-name"></span></h3>
+                                    <p><strong><span class="college-name"></span></strong> — <span class="college-location"></span></p>
+                                    <p class="academic-achievements"><span class="achievements-title"></span>: <span class="achievements-list"></span></p>
+                                    <p class="course-list-container"><span class="course-list-title"></span>: <span class="course-list"></span></p>
+                                </div>
+                            </div>
+                        </div>
+                    </section>
+                    <section id="work">
+                        <h2><span class="work-section-title"></span></h2>
+                        <div class="work-entries">
+                            <div class="work-entry">
+                                <div class="work-info-logo-container">
+                                    <img class="work-company-logo" src="" alt=""/>
+                                    <div class="work-info">
+                                        <h3><span class="work-company"></span></h3>
+                                        <p class="work-position-container"><strong><span class="work-position-title"></span>: </strong><span class="work-position"></span></p>
+                                        <p class="work-location-year-container"><strong><span class="work-location-title"></span>: </strong><span class="work-location"></span> — <strong><span class="work-year-title"></span>: </strong><span class="work-year"></span></p>
+                                    </div>
+                                </div>
+                                <p class="work-tags-container"><span class="work-tags"></span></p>
+                                <div class="work-accomplishments">
+                                    <ul class="work-accomplishments-list"></ul>
+                                </div>
+                            </div>
+                        </div>
+                    </section>
+                    <section id="research">
+                        <h2><span class="research-section-title"></span></h2>
+                        <!-- Subsection: Publications -->
+                        <div class="research-subsection" id="publications">
+                            <h3><span class="publications-research-subsection-title"></span></h3>
+                            <p class="citation-key">C=Conference J=Journal S=In Submission</p>
+                            <div class="dotted-divider"></div>
+                            <div class="publications-content">
+                            </div>
+                        </div>
+                        <!-- Subsection: Research Projects -->
+                        <div class="research-subsection" id="research-projects">
+                            <h3><span class="projects-research-subsection-title"></span></h3>
+                            <div class="dotted-divider"></div>
+                            <div class="research-tiles">
+                                <div class="research-tile">
+                                    <h3><span class="research-project-title"></span></h3>
+                                    <h4><span class="research-sub-title"></span></h4>
+                                    <p><span class="research-tags"></span></p>
+                                    <div class="spacer"></div>
+                                    <div class="research-project-accomplishments">
+                                        <ul></ul>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </section>
+                    <section id="consulting">
+                        <h2><span class="consulting-section-title"></span></h2>
+                        <div class="consulting-entries">
+                            <div class="consulting-entry">
+                                <div class="consulting-info">
+                                    <h3><span class="consulting-activity"></span></h3>
+                                    <p class="consulting-location-year-container"><strong><span class="consulting-location-title"></span>: </strong><span class="consulting-location"></span> — <strong><span class="consulting-year-title"></span>: </strong><span class="consulting-year"></span></p>
+                                </div>
+                                <div class="consulting-accomplishments">
+                                    <ul class="consulting-accomplishments-list"></ul>
+                                </div>
+                            </div>
+                        </div>
+                    </section>
+                    <section id="volunteer">
+                        <h2><span class="volunteer-section-title"></span></h2>
+                        <div class="volunteer-entries">
+                            <div class="volunteer-entry">
+                                <div class="volunteer-info">
+                                    <h3><span class="volunteer-organization"></span></h3>
+                                    <p class="volunteer-position-container"><strong><span class="volunteer-position-title"></span>: </strong><span class="volunteer-position"></span></p>
+                                    <p class="volunteer-location-year-container"><strong><span class="volunteer-location-title"></span>: </strong><span class="volunteer-location"></span> — <strong><span class="volunteer-year-title"></span>: </strong><span class="volunteer-year"></span></p>
+                                </div>
+                                <div class="volunteer-accomplishments">
+                                    <ul class="volunteer-accomplishments-list"></ul>
+                                </div>
+                            </div>
+                        </div>
+                    </section>
+                </main>
+                <footer>
+                    <p>&copy; 2025 Zelong Li</p>
+                </footer>
+            </div>
+        </div>
+    </div>
+    <!-- Modal Popup for Detailed Personal Project View -->
+    <div id="modal" class="modal">
+        <div class="modal-content">
+            <span class="modal-close" id="modal-close">&times;</span>
+            <h2 id="modal-title"></h2>
+            <div class="modal-main-image-container">
+                <button class="arrow-btn left" id="prev-image" type="button">&lt;</button>
+                <div class="modal-image-gallery" id="modal-image-gallery">
+                    <img id="modal-main-image" class="modal-main-image" src="" alt="Main Project Image" />
+                </div>
+                <button class="arrow-btn right" id="next-image" type="button">&gt;</button>
+            </div>
+            <div id="modal-body">
+        </div>
+    </div>
+    <script>
+        // enable page if JS is available
+        document.querySelector('.yes-js').style.display = 'block';
+
+        // when page is fully loaded, hide loader screen, display page contents
+        window.addEventListener('load', handleLoaderEvents);
+
+        var dev = false;
+        var globIcons = [];
+
+        async function loadJSON() {
+            // Load language from localStorage or default to 'en'
+            const language = localStorage.getItem('language') || 'en';
+
+            // use flask to write json to txt file as encoded string
+            if (dev) {
+                // Load JSON data
+                const response = await fetch('static/data_dev/content.json');
+                const loadedJSON = await response.json();
+                // encode data
+                const encodedString = encodeJSON(loadedJSON);
+                const rotEncodedString = rot(encodedString)
+                // save to file
+                await writeToFile(rotEncodedString, 'content');
+            }
+
+            // read from file
+            const loadResponse = await fetch('static/data/content.txt');
+            const savedString = await loadResponse.text();
+            // decode string to obj
+            const decodedJSON = await decodeJSON(rot(savedString));
+
+            // select current Language
+            const data = decodedJSON[language];
+
+            // quick check
+            if (!decodedJSON[language]) {
+                window.alert(`Language ${language} not found in JSON.`);
+                return;
+            }
+
+            // update global data. shallow copy.
+            globIcons = [...data.icons];
+
+            // Populate Link Icons
+            populateIcons(data.icons);
+
+            // Populate Header section
+            populateHeader(data.header);
+
+            // Populate Sidebar Links
+            populateSidebar(data.sidebar);
+
+            // Populate About section
+            populateAbout(data.about);
+
+            // Populate Updates section
+            populateUpdates(data.updates);
+
+            // Populate Projects section
+            populateProjects(data.projects);
+
+            // Populate Education section
+            populateEducation(data.education);
+
+            // Populate Research section
+            populateResearch(data.research);
+
+            // Populate Work section
+            populateWork(data.work);
+
+            // Populate Volunteer section
+            populateConsulting(data.consulting);
+
+            // Populate Volunteer section
+            populateVolunteer(data.volunteer);
+
+            // Populate Modals
+            configureModals(data.modal);
+
+            // Enable 3D Animations
+            add3D();
+        }
+
+        async function handleAsync() {
+            // Load text data
+            await loadJSON();            
+        }
+
+        function configureJSFunctionality() {
+            // Sidebar collapse functionality
+            configureSidebar();
+
+            // Language toggle functionality
+            configureLangToggle();
+
+            // Dark/Light toggle with icon changes and mode switching.
+            configureTheme();
+
+            // Side bar links smooth scrolling and active link highlighting
+            configureSidebarLinks();
+
+            // Updates section collapse functionality
+            configureUpdatesCollapse();
+        }
+
+        document.addEventListener('DOMContentLoaded', () => {
+            // turn loader visible if first visit
+            toggleLoader();
+
+            // Load JSON data and handle async operations
+            handleAsync();
+
+            // Configure the JavaScript functionality of interactive elements
+            configureJSFunctionality();
+        });
+    </script>
+</body>
 </html>
