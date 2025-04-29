@@ -39,7 +39,6 @@ function configureTheme(){
         // updateLogos();
     });
 
-    switchRenderColor(localStorage.getItem('theme'));
     updateThemeIcon(); // Set the initial icon
 }
 
