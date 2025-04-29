@@ -24,6 +24,8 @@ function configureTheme(){
         localStorage.setItem('theme', body.classList.contains('dark') ? 'dark' : 'light');
         updateThemeIcon();
         updateIcons();
+        switchRenderColor(localStorage.getItem('theme'));
+
         // updateLogos();
     });
 
@@ -33,11 +35,12 @@ function configureTheme(){
         localStorage.setItem('theme', body.classList.contains('dark') ? 'dark' : 'light');
         updateThemeIcon();
         updateIcons();
+        switchRenderColor(localStorage.getItem('theme'));
         // updateLogos();
     });
 
+    switchRenderColor(localStorage.getItem('theme'));
     updateThemeIcon(); // Set the initial icon
-    
 }
 
 

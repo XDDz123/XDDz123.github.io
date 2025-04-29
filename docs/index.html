@@ -31,12 +31,14 @@
     <script type="text/javascript" src="static/js/encode.js"></script>
     <!-- loading threejs code for 3d animations-->
     <script type="module" src="static/js/three.js"></script>
-    <!-- <script type="module" src="static/js/3d.js"></script> -->
+
+    <!-- <script type="module" src="static/js/index-C7D_OZ5s.js"></script> -->
+    <!-- <script type="module" src="static/js/three.js"></script> -->
     <!-- load favicons -->
-    <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
-    <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
-    <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
-    <link rel="manifest" href="/site.webmanifest">
+    <link rel="apple-touch-icon" sizes="180x180" href="apple-touch-icon.png">
+    <link rel="icon" type="image/png" sizes="32x32" href="favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="favicon-16x16.png">
+    <link rel="manifest" href="site.webmanifest">
 
     <title>Zelong Li's Website</title>
 </head>
@@ -321,9 +323,6 @@
 
             // Populate Modals
             configureModals(data.modal);
-
-            // Enable 3D Animations
-            add3D();
         }
 
         async function handleAsync() {
@@ -348,15 +347,23 @@
             configureUpdatesCollapse();
         }
 
-        document.addEventListener('DOMContentLoaded', () => {
+        async function setupPage() {
             // turn loader visible if first visit
             toggleLoader();
 
             // Load JSON data and handle async operations
-            handleAsync();
+            await handleAsync();
 
             // Configure the JavaScript functionality of interactive elements
             configureJSFunctionality();
+
+            // Enable 3D Animations
+            add3D();
+            add3DProfile();
+        }
+
+        document.addEventListener('DOMContentLoaded', () => {
+            setupPage();
         });
     </script>
 </body>

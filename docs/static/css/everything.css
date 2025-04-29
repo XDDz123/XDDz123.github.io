@@ -245,7 +245,7 @@ body.light header h1:hover {
     color: #0e0e0e;
 }
 body.light header {
-    background-color: #f5f5f5;
+    background-color: #f6f6f6;
     color: #333;
     border-color: transparent;
     box-shadow: 0 2px 4px rgba(0,0,0,0.1);
@@ -316,6 +316,8 @@ body.dark .lang-toggle:active {
 }
 /* Profile Picture Styling */
 .profile-picture {
+    min-width: 120px;
+    min-height: 120px;
     width: 120px;
     height: 120px;
     border-radius: 50%;
@@ -323,6 +325,7 @@ body.dark .lang-toggle:active {
     margin-right: 40px;
     border: 2px solid #ddd;
     transition: transform 0.2s;
+    background-color: #191919;
 }
 .profile-picture:hover {
     transform: scale(1.02);
@@ -334,7 +337,8 @@ body.light .profile-picture {
     border-radius: 50%;
     overflow: hidden;
     margin-right: 40px;
-    border: 2px solid #8d8d8d;
+    border: 2px solid #a8a8a8;
+    background-color: #fafafa;
 }
 .profile-picture img {
     width: 100%;

@@ -5,18 +5,21 @@ function configureSidebarLinks() {
     // Highlight active section link in the sidebar
     const highlightActiveLink = () => {
         let currentSection = '';
-        sections.forEach(section => {
-            const sectionTop = section.offsetTop - 100; // Adjust for header height
-            const sectionBottom = sectionTop + section.offsetHeight;
-            if (window.scrollY >= sectionTop && window.scrollY < sectionBottom) {
-                currentSection = section.getAttribute('id');
-            }
-        });
 
-        // Handle the last section explicitly
-        const lastSection = sections[sections.length - 1];
-        if (window.scrollY + window.innerHeight >= document.body.scrollHeight - 1) {
-            currentSection = lastSection.getAttribute('id');
+        if (window.scrollY > 10) {
+            sections.forEach(section => {
+                const sectionTop = section.offsetTop - 100; // Adjust for header height
+                const sectionBottom = sectionTop + section.offsetHeight;
+                if (window.scrollY >= sectionTop && window.scrollY < sectionBottom) {
+                    currentSection = section.getAttribute('id');
+                }
+            });
+
+            // Handle the last section explicitly
+            const lastSection = sections[sections.length - 1];
+            if (window.scrollY + window.innerHeight >= document.body.scrollHeight - 1) {
+                currentSection = lastSection.getAttribute('id');
+            }
         }
 
         sidebarLinks.forEach(link => {
