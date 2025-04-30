@@ -40,6 +40,7 @@ function configureTheme(){
     });
 
     updateThemeIcon(); // Set the initial icon
+    updateIcons();
 }
 
 
